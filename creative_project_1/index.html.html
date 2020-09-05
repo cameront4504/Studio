@@ -1,0 +1,78 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <!-- The More You Type, The More It Decays -->
+    <!-- My concept revolves around how frustrating it is to talk -->
+    <title>I Wanted to Tell You</title>
+    <!-- or alternatively: What I Wanted to Say-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@700&display=swap" rel="stylesheet"> 
+    <style>
+        html,body {
+            height: 100%;
+            background-image: url("bg_glow.jpg");
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            margin-top: -10px;
+            overflow: hidden;
+        }
+        #container {
+            bottom: 0;
+            left: 0;
+            position: fixed;
+            height: 200px;
+        }
+
+        h1 {
+            font-size: 4em;
+            font-family: 'Noto Serif', serif;
+            color: white;
+            padding-left: 50px;
+        }
+
+        #WhatIWantedToSay {
+            font-size: 5em;
+            font-family: 'Noto Serif', serif;
+            color: white;
+            width: 100%;
+            height: 100%;
+            word-wrap: break-word;
+        }
+    </style>
+    <!-- water plugin -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.ripples/0.5.3/jquery.ripples.js" integrity="sha512-wrQIZRuIVRafoAsp5i2HIXa+3oF+lQqx4eOMAdw+vt7npivM7+D4OMIZPhlkdbV18VxZLkn2QaOii6cr8c1+dA==" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="WhatIWantedToSay"></div>
+    <div id="container">
+        <h1>I wanted to tell you</h1>
+    </div>
+<script>
+    // make ripples for plugin
+    $('body').ripples({
+        resolution: 600,
+        dropRadius: 20,
+        perturbance: 0.09,
+    });
+    // on every key press
+    document.onkeypress = function (e) {
+        e = e || window.event;
+        var key = String.fromCharCode(event.which);
+        //var randomColor = '#' + ('00000' + (Math.random() * 16777216 << 0).toString(16)).substr(-6);
+        var opacity = $("h1").css('opacity');
+		//var opacity = $("#WhatIWantedToSay").css('opacity');
+        var x = Math.floor(Math.random() * window.innerWidth);
+        var y = Math.floor(Math.random() * window.innerHeight);
+        $('body').ripples("drop", x, y, 20, 50);
+        $("#WhatIWantedToSay").append(key);
+        //$("h1").css("color",randomColor);
+        $("h1").css("opacity",opacity-.01);
+		//$("#WhatIWantedToSay").css("opacity",opacity-.005);
+
+    };
+</script>
+</body>
+</html>
